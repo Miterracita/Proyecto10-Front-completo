@@ -100,15 +100,17 @@ textarea {
     height: 100vh;
     background-color: var(--background-light);
     z-index: 10;
-    position: absolute;
+    position: fixed;
     top:0;
-    right: 0;
+    left: 0;
     opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img-loading {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
