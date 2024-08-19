@@ -1,0 +1,18 @@
+.body-eventList {
+ background-color: #E5C287;
+ padding: 100px 150px;
+}
+.body-eventList h1 {
+    color: var(--background-one)
+}
+
+@media (max-width: 1024px) {
+    .body-eventList {
+        padding: 25px;
+    }
+}
+@media (max-width: 768px) {
+    button#buscar-evento {
+        margin-left: 0px;
+    }
+}

@@ -1,0 +1,48 @@
+.register {
+    color: var(--background-four);
+}
+
+.body-newRegister{
+    background-color: var(--background-two);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-newRegister{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border-radius: 15px;
+    width: 75%;
+    margin:0 auto;
+}
+
+.box-newRegister {
+    margin-top: 30px;
+    background-color: var(--background-light);
+    padding: 50px;
+}
+
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 40px;
+    }
+    .main-newRegister{
+        padding: 30px;
+        width: 100%;
+        margin:0;
+    }
+    .box-newRegister {
+        padding: 30px;
+        width: 100%;
+    }   
+    .box-form{
+        flex-direction: column;
+    }
+}

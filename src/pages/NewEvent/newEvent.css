@@ -1,0 +1,45 @@
+.new-event {
+    color: var(--background-four);
+}
+
+.body-newEvent {
+    background-color: var(--background-four-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-newEvent {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border-radius: 15px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.line-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.box-newEvent {
+    margin-top: 30px;
+    background-color: var(--background-three);
+    padding: 50px;
+    width: 100%;
+}
+
+.m-l-20 {
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .main-newEvent {
+        width: 80%;
+    }
+}

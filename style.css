@@ -1,0 +1,114 @@
+:root {
+    --background-one:#0fa3b1;
+    --background-two: #b5e2fa;
+    --background-three:#eddea4;
+    --background-four:#f7a072;
+    --background-light: #f9f7f3;
+    --background-four-light:rgb(239, 198, 176);
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.btn {
+    padding: 15px;
+    background-color: var(--background-one);
+    border: none;
+    color: white;
+    display: flex;
+    margin: 0 auto;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+}
+.btn:hover {
+    background-color: var(--background-four);
+}
+.btn:hover a{
+    font-weight: 600;
+}
+
+.btn a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    width: 150px;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Lexend", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+}
+
+h1 {
+    font-size: 65px;
+}
+
+/*Form*/
+
+.box-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+p,
+label {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+}
+label {
+    margin-right: 20px;
+}
+input {
+    padding: 10px;
+    border: 1px solid rgb(201, 201, 201);
+    margin:10px 0;
+    border-radius: 5px;
+    width: 100%;
+}
+textarea {
+    padding: 10px;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 5px;
+}
+
+#error-message{
+    /* padding: 20px; */
+    margin: 20px;
+    color: red;
+    font-family: monospace;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+#loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-light);
+    z-index: 10;
+    position: absolute;
+    top:0;
+    right: 0;
+    opacity: 0.5;
+}
+
+.img-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

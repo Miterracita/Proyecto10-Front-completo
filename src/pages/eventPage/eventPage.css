@@ -1,0 +1,85 @@
+.body-eventPage {
+ background-color: #E5C287;
+ padding: 100px 150px;
+}
+.eventPage-box-page {
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: white;
+}
+
+.eventPage-img {
+    width: 100%;
+    overflow: hidden;
+    height: 400px;
+}
+.eventPage-img img{
+    width: 100%;
+    object-fit: cover;
+}
+.eventPage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.eventPage-date,
+.eventPage-hour {
+    font-size: 20px;
+    font-weight: 900;
+    color: #888;
+}
+.eventPage-date span, 
+.eventPage-hour span {
+    color: #000000;
+}
+.eventPage-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 60px;
+    font-weight: 600;
+    color: var(--background-one);
+    text-align: center;
+    margin: 50px 0;
+}
+.eventPage-description {
+    font-size: 20px;
+    color: #888;
+}
+.eventPage-location {
+    font-size: 20px;
+}
+
+.eventPage-buttons {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    gap:20px;
+}
+
+.asistentes h3 {
+    color: var(--background-one);
+    text-align: left;
+    margin: 30px 0;
+}
+.asistentes li {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 30px;
+}
+
+@media (max-width: 1024px) {
+    .body-eventPage {
+        padding: 25px;
+    }
+    .eventPage-box-page {
+        margin: 0px;
+    }
+    .eventPage-name {
+        font-size: 40px;
+    }
+}

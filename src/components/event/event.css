@@ -1,0 +1,85 @@
+.event-box {
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 50px;
+    display: flex;
+    gap: 30px;
+    background-color: white;
+}
+.event-box:hover {
+    box-shadow: 0px 0px 20px 0px #fff;
+    border: 1px solid #fff;
+}
+.event-box:hover .event-name{
+    color: #E8751A;
+}
+.event-box:hover .event-img img {
+    filter: sepia(60%);
+}
+.event-img {
+    width: 25%;
+    overflow: hidden;
+    height: 250px;
+}
+.event-img img{
+    height: 100%;
+}
+.event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+}
+.event-date,
+.event-hour {
+    font-size: 12px;
+    font-weight: 900;
+    color: #888;
+}
+.event-date span, 
+.event-hour span {
+    color: #000000;
+}
+.event-name {
+    font-family: 'Courier New', Courier, monospace;;
+    font-size: 35px;
+    font-weight: 600;
+    color: var(--background-one);
+}
+.event-description {
+    font-size: 14px;
+    color: #888;
+}
+.event-location {
+    font-size: 14px;
+}
+
+.event-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 768px) and (max-width:1024px) {
+    .event-buttons {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+@media (max-width: 1024px) {
+
+    .event-box {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+    }
+    .event-img {
+        width: 100%;
+    }
+    .event-img img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+}

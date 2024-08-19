@@ -1,0 +1,19 @@
+header {
+    padding: 20px;
+}
+
+.header-btns {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.btn-header {
+    width: auto;
+    background-color: var(--background-four);
+    padding: 25px;
+    margin: 0 0 0 30px;
+}
+
+.btn-header:hover {
+    background-color: var(--background-one);
+}
