@@ -1,12 +1,25 @@
 import "./style.css";
 import RenderLoginHtml from './src/pages/Login/Login';
 import { EventPage } from './src/pages/eventPage/eventPage';
-import { BtnVolver } from "./funciones";
+import { AllEvents } from "./funciones";
 
 //url local // const urlLocal = "http://localhost:3000/";
 const urlProduccion = "https://back-proyecto-10-mu.vercel.app/";
 
-RenderLoginHtml();
+// antes de cargar la página comprobamos si existe token
+document.addEventListener("DOMContentLoaded", function() {
+  const token = localStorage.getItem('token');
+  if (token) {
+      // Autenticar al usuario automáticamente
+      console.log("Usuario autenticado con token:", token);
+      // Cargar la pagina principal
+      AllEvents();
+  } else {
+      // Redirigir al usuario a la página de login
+      RenderLoginHtml();
+  }
+});
+
 
 // -->>> LLAMADAS A LA BBDD <<<--
 
@@ -35,14 +48,12 @@ window.handleViewEvent = async (eventId) => {
     const event = await fetchEventDetails(eventId);
     if (event) {
         EventPage(event); //ejecutamos la función para pintar la página con la info del evento proporcionado
-        BtnVolver(); //incluimos el botón volver en el header
-
     } else {
         console.error('Error al cargar los detalles del evento');
     }
 };
 
-//confirmar asistencia a un evento con determinado id --> REVISAR NO COMPRUEBA SI YA ESTÁ CONFIRMADO EL USUARIO
+//confirmar asistencia a un evento con determinado id
 const fetchConfirmarAsistencia = async (eventId) => {
 
   // Mostrar el loading

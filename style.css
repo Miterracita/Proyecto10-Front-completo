@@ -42,6 +42,10 @@
     font-weight: 400;
 }
 
+.btn-delete {
+    background-color: red;
+}
+
 h1,
 h2,
 h3 {
@@ -84,6 +88,8 @@ textarea {
     padding: 10px;
     border: 1px solid rgb(201, 201, 201);
     border-radius: 5px;
+    width: 100%;
+    margin:10px 0;
 }
 
 #error-message{

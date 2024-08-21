@@ -4,10 +4,7 @@
 
 .body-newEvent {
     background-color: var(--background-four-light);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0 25%;
 }
 .main-newEvent {
     background-color: white;
@@ -17,8 +14,10 @@
     align-items: center;
     padding: 50px;
     border-radius: 15px;
-    width: 100%;
     margin: 0 auto;
+}
+.main-newEvent h1 {
+    color: var(--background-one);
 }
 
 .line-flex {
@@ -34,12 +33,16 @@
     width: 100%;
 }
 
+label {
+    margin-right: 0px;
+}
+
 .m-l-20 {
     margin-left: 20px;
 }
 
 @media (max-width: 768px) {
-    .main-newEvent {
-        width: 80%;
+    .body-newEvent {
+        margin: 0 5%;
     }
 }

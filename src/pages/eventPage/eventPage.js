@@ -9,11 +9,13 @@ export const EventPage = (event) => {
   bodyEventPage.classList.add('body-eventPage');
 
   const mainEventPage = document.querySelector('main');
+  const imagenXDefecto = "https://res.cloudinary.com/dq2daoeex/image/upload/v1723579439/API-Rest-FILES/imagen_por_defecto_dldpud.jpg";
+
 
   //generamos el html de la página del evento
   const eventPageHtml = `
         <div class="eventPage-box-page" id="event-${event._id}">
-            <div class="eventPage-img"><img src="${event.img}" /></div>
+            <div class="eventPage-img"><img src="${event.img || imagenXDefecto}" /></div>
             <div class="eventPage-info">              
                 <h2 class="eventPage-name">${event.name}</h2>
                 <div id="error-message" class="error-message"></div>

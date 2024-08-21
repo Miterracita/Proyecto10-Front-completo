@@ -78,8 +78,8 @@ export const NewUser = () => {
             const res = await fetch(`${urlProduccion}users/registro`, opciones);
 
             if (!res.ok) {
-                if (res.status === 400) { //usuario ya existe
-                    errorMessage.textContent= 'El nombre de usuario ya existe. Por favor, elija otro.';
+                if (res.status === 400) { //usuario o password ya existe
+                    errorMessage.textContent= 'El nombre de usuario y/o password ya existe. Por favor, elija otro.';
                 } else {
                     console.error("Error en la respuesta del servidor:", res.statusText);
                 }

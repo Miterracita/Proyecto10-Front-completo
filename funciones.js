@@ -2,9 +2,13 @@ import EventList from "./src/pages/eventsList/eventList";
 
 //url proyecto en producción para todas las llamadas fetch
 const urlProduccion = "https://back-proyecto-10-mu.vercel.app/";
+const token = localStorage.getItem('token');
 
 //Función LOGIN
 export const Login = async (userName, password) => {
+
+  // Mostrar el loading
+  document.getElementById('loading').style.display = 'block';
 
   const errorMessage = document.querySelector('#error-message');  
       
@@ -46,8 +50,6 @@ export const Login = async (userName, password) => {
           localStorage.setItem("token", respuestaFinal.token);
 
           //--> una vez identificados correctamente nos redirige a la página de eventos <--
-          // const eventos = await fetchEvents();
-          // EventList(eventos);/
           AllEvents();
 
       } else {
@@ -57,11 +59,106 @@ export const Login = async (userName, password) => {
   } catch (error) {
       console.error('Error en la petición:', error);
       errorMessage.textContent = "Error en la conexión. Por favor, inténtalo de nuevo.";
+  } finally {
+    // Ocultar el loading
+    document.getElementById('loading').style.display = 'none';
   }
   
 }
 
+//Función que lanzaremos al enviar el formulario CREAR NUEVO EVENTO
+export const NuevoEvento = async (e) => {
+  e.preventDefault();
+  
+  // Mostrar el loading
+  document.getElementById('loading').style.display = 'block';
 
+  const [nameInput, descriptionInput, dateInput, timeInput, locationInput, imgInput] = e.target.elements;
+  const body = new FormData();
+
+  body.append("name", nameInput.value);
+  body.append("description", descriptionInput.value);
+  body.append("date", dateInput.value);
+  body.append("time", timeInput.value);
+  body.append("location", locationInput.value);
+
+  // Solo añadir la imagen si se ha seleccionado una
+  if (imgInput.files[0]) {
+    body.append("img", imgInput.files[0]);
+  }
+  
+  try {
+      const res = await fetch(`${urlProduccion}events/nuevoEvento`, {
+          method: "POST",
+          headers: {
+              "Authorization": `Bearer ${token}` // Incluye el token aquí
+          },
+          body:body
+      });
+
+      if (!res.ok) {
+          console.error("Error en la respuesta del servidor:", res.statusText);
+          return;
+      }
+
+      //si el evento se ha creado correctamente
+      const respuestaFinal = await res.json();
+      console.log("Respuesta del servidor:", respuestaFinal);
+
+      const errorMessage = document.querySelector('#error-message');
+      errorMessage.textContent= 'El evento se ha creado correctamente.';
+
+  } catch (error){
+      console.error('Error en la solicitud:', error);
+  } finally {
+      // Ocultar el loading
+      document.getElementById('loading').style.display = 'none';
+    }
+}
+
+//ELIMINAR EVENTO por id
+export const EliminarEvento = async (eventId) => {
+  // Mostrar el loading
+  document.getElementById('loading').style.display = 'block';
+
+  try {
+
+    const res = await fetch(`${urlProduccion}events/${eventId}/borrar`, {
+      method: "DELETE",
+      headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+      }
+    });
+
+    const boxErrorMessage = document.querySelector(`#event-${eventId} .error-message`);
+
+    if (!res.ok) {
+      boxErrorMessage.textContent = `Error: ${res.statusText}`;
+      console.error("Error en la respuesta del servidor:", res.statusText);
+      return;
+  }
+    
+    //SI SE HA ELIMINADO CORRECTAMENTE
+    const respuestaFinal = await res.json();
+    boxErrorMessage.textContent= 'El evento se ha eliminado correctamente.';
+    console.log("Respuesta del servidor:", respuestaFinal);
+
+    // Eliminar el evento del DOM
+    document.getElementById(`event-${eventId}`).remove();
+
+  } catch (error) {
+
+    console.error('Error en la solicitud:', error);
+    const boxErrorMessage = document.querySelector(`#event-${eventId} .error-message`);
+    boxErrorMessage.textContent = `Error al eliminar el evento: ${error.message}. Inténtelo de nuevo.`;
+
+  } finally {
+
+    // Ocultar el loading
+    document.getElementById('loading').style.display = 'none';
+  }
+}
 //Función para VER TODOS LOS EVENTOS DISPONIBLES dentro del componente EventList
 export const AllEvents = async () => {
 
@@ -99,30 +196,36 @@ export const EventByName = async (eventName) => {
     //para asegurarte de que el nombre del evento esté correctamente codificado en la URL, especialmente si tiene espacios o caracteres especiales.
     //Esto asegura que el backend reciba correctamente el nombre del evento, evitando problemas de interpretación de la URL.
     //El uso de encodeURIComponent(eventName) en la construcción de URLs con parámetros de consulta es una buena práctica que asegura que la URL sea válida y funcione correctamente, independientemente de los caracteres que contenga eventName.
-    const res = await fetch(`${urlProduccion}events/eventList/?name=${encodeURIComponent(eventName)}`, {
-      
-      method: 'GET',
+    const res = await fetch(`${urlProduccion}events?name=${encodeURIComponent(eventName)}`, {
+      method: "GET",
       headers: {
-          'Content-Type': 'application/json', 
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
       }
-
     });
 
-    console.log('Response status:', res.status); // verificar el estado de la respuesta
-
     if (!res.ok) {
-        throw new Error('Error al obtener el evento');
-    }
+      console.error("Error en la respuesta del servidor:", res.statusText);
+      const errorMessage = document.querySelector('#error-message');
+      errorMessage.textContent = `Error: ${res.statusText}`;
+      return;
+  }
 
     const events = await res.json();
-    console.log('Eventos obtenidos:', events); // verificar los datos obtenidos
+    console.log('Eventos encontrados:', events);
+
+            // // Aquí puedes actualizar el DOM con los eventos encontrados
+            // const resultsContainer = document.querySelector('#results-container');
+            // resultsContainer.innerHTML = events.map(event => `<div>${event.name}</div>`).join('');
 
     EventList(events);
-    return events;
+    // return events;
 
   } catch (error) {
       console.error('Error al obtener los eventos:', error);
-      return [];
+      const errorMessage = document.querySelector('#error-message');
+      errorMessage.textContent = 'Error al buscar el evento. Inténtelo de nuevo.';
+      // return [];
   } finally {
       document.getElementById('loading').style.display = 'none';
   }
@@ -242,4 +345,8 @@ export const BtnVolver = () => {
       e.preventDefault();
       AllEvents();
   });
+}
+export const DeleteBtnCrearEvent = () => {
+  const header = document.querySelector('.header-btns');
+  header.innerHTML = '';
 }

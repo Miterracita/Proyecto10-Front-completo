@@ -17,3 +17,6 @@ header {
 .btn-header:hover {
     background-color: var(--background-one);
 }
+#btn-volver {
+    margin:0px;
+}

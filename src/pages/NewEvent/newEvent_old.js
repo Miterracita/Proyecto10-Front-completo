@@ -1,4 +1,5 @@
 import "./newEvent.css";
+import EventList from "../eventsList/eventList";
 
 export const NewEvent = () => {
 
@@ -11,7 +12,7 @@ export const NewEvent = () => {
     const mainNewEvent = document.querySelector('main');
     const newEventHtml = `
         <section class="main-newEvent">
-            <h1>New Event</h1>
+            <h1 class="new-event">New Event</h1>
             <h2 class="new-event">2024</h2>
             <h2 class="new-event">Summer Events</h2>
             <div id="error-message"></div>
@@ -19,26 +20,26 @@ export const NewEvent = () => {
                 <form id="newEventForm">
                     <div class="box-form-newEvent">
                         <div class="line-flex">
-                            <label>Nombre:</label>
-                            <input type="text" name="event-name" id="event-name" required>
+                            <label>Nombre: </label>
+                            <input type="text" name="event-name" id="event-name">
                         </div>
                         <div class="line-flex">
-                            <label>Descripción:</label>
-                            <textarea rows="10" name="description" id="description">Descripción del evento</textarea>
+                            <label>Descripción: </label>
+                            <textarea name="textarea" rows="10" name="description" id="description">Descripción del evento</textarea>
                         </div>
                         <div class="line-flex">
-                            <label>Fecha:</label>
-                            <input type="date" id="date" name="date" value="2024-06-01" min="2024-06-01" max="2024-12-01" />
+                            <label>Fecha: </label>
+                            <input type="date" id="date" name="trip-start" value="2024-06-01" min="2024-06-01" max="2024-12-01" />
 
-                            <label>Hora:</label>
+                            <label class="m-l-20">Hora: </label>
                             <input type="time" id="time" name="time" min="19:00" max="05:00" required />
                         </div>
                         <div class="line-flex">
-                            <label>Localización:</label>
+                            <label>Localización: </label>
                             <input type="text" id="location" name="location" value="location">
                         </div>
                         <div class="line-flex">
-                            <label>Imagen del evento:</label>
+                            <label>Imagen del evento: </label>
                             <input type="file" id="event-img" name="event-img" />
                         </div>
                     </div>
