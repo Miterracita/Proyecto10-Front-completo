@@ -33,6 +33,9 @@ export const EventPage = (event) => {
     `;
     mainEventPage.innerHTML = eventPageHtml;
 
+    const btnVolverBorrar = document.querySelector('#btn-volver');
+    btnVolverBorrar.classList.remove("eliminar");
+
     const btnVerAsistentes = document.querySelector('#ver-asistentes');
 
     btnVerAsistentes.addEventListener('click', (e) => {

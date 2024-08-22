@@ -1,17 +1,20 @@
 import "./filtros.css";
-import { EventByName } from "../../../funciones";
+import { EventByName, AllEvents } from "../../../funciones";
 
 export const Filtros = () => {
 
     const filtrosHtml = `
-        <h2>Filtros</h2>
         <form id="filtro-eventos">
             <div class="form-buscar-nombre">
                 <div>
                     <label class="bold" for="event-name">Buscar eventos por nombre:</label>
                     <input type="text" name="event-name" id="event-name" size="30">
                 </div>
-                <button type="submit" id="buscar-evento" class="btn btn-header">Buscar</button>
+                <div class="error bold"></div>
+                <div class="btns-filtros">
+                    <button type="button" id="buscar-evento" class="btn btn-header">Buscar</button>
+                    <button type="button" id="limpiar-filtro" class="btn btn-header">Limpiar filtro</button>
+                </div>
             </div>
         </form>
     `;
@@ -19,10 +22,10 @@ export const Filtros = () => {
     const filtrosDiv = document.querySelector('.filtros');
     filtrosDiv.innerHTML = filtrosHtml;
 
-    const formBuscarEvento = document.querySelector('#filtro-eventos');
+    const formBuscarEvento = document.querySelector('#buscar-evento');
 
-    formBuscarEvento.addEventListener('submit', (e) => {
-        e.preventDefault();
+    formBuscarEvento.addEventListener('click', () => {
+
         const eventName = document.querySelector('#event-name').value.trim();
 
         if (eventName) {
@@ -31,14 +34,12 @@ export const Filtros = () => {
             alert('Por favor, ingresa un nombre de evento para buscar.');
         }
     });
+
+    const btnLimpiarFiltro = document.querySelector('#limpiar-filtro');
+
+    btnLimpiarFiltro.addEventListener('click', () => {
+        AllEvents();
+    });
 }
 
 export default Filtros;
-
-{/* <div class="form-ordenar-fecha">
-<p class="bold">Ordenar por:</p>
-<div>
-    <input type="radio" id="ordenar-fecha" name="ordenar-fecha">
-    <label for="ordenar-fecha">Fecha más cercana</label>
-</div>
-</div> */}

@@ -1,6 +1,6 @@
 import "./header.css";
 import NewEvent from '../../pages/NewEvent/newEvent';
-import { BtnVolver, DeleteBtnCrearEvent } from "../../../funciones";
+import { BtnVolver, DeleteBtns, CerrarSesion, AllEvents } from "../../../funciones";
 
 export const Header = () => {
     
@@ -8,7 +8,9 @@ export const Header = () => {
     const header = document.querySelector('header');
     header.innerHTML = `
         <div class="header-btns">
-            <button class="btn btn-header" id="new-event-link">Crear nuevo evento</button>
+            <button type="button" class="btn btn-header" id="btn-volver">Volver</button>
+            <button type="button" class="btn btn-header" id="new-event-link">Crear nuevo evento</button>
+            <button type="button" class="btn btn-cerrar-sesion" id="btn-cerrar-sesion">Cerrar sesión</button>
         </div>
     `;
 
@@ -18,8 +20,23 @@ export const Header = () => {
     newEventLink.addEventListener('click', (e) => {
         e.preventDefault();
         NewEvent();
-        DeleteBtnCrearEvent();
+        DeleteBtns();
         BtnVolver();
+    });
+
+    const btnCerrarSesion = document.querySelector('#btn-cerrar-sesion');
+
+    btnCerrarSesion.addEventListener('click', (e) => {
+        e.preventDefault();
+        CerrarSesion();
+    });
+
+    //Seleccionamos el botón volver
+    const botonVolver = document.querySelector('#btn-volver');
+
+    botonVolver.addEventListener('click', (e) => {
+        e.preventDefault();
+        AllEvents();
     });
 };
 

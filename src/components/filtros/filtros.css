@@ -9,11 +9,9 @@
     background-color: var(--background-three);
 }
 
-.form-buscar-nombre,
-.form-ordenar-fecha {
+.form-buscar-nombre {
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    flex-direction: column;
     align-items: center;
 }
 .form-ordenar-fecha {
@@ -27,6 +25,15 @@ input[type="radio"] {
 }
 .bold {
     font-weight: 700;
+}
+.btns-filtros {
+    display: flex;
+    gap: 30px;;
+}
+.error {
+    padding: 30px;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 @media (max-width: 768px) {

@@ -1,22 +1,28 @@
 header {
     padding: 20px;
+    margin: 0 50px;
 }
 
 .header-btns {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+    gap: 20px;
 }
 .btn-header {
     width: auto;
-    background-color: var(--background-four);
     padding: 25px;
-    margin: 0 0 0 30px;
+    margin: 0;
 }
 
-.btn-header:hover {
-    background-color: var(--background-one);
-}
 #btn-volver {
     margin:0px;
+}
+
+.btn-cerrar-sesion {
+    background-color: red;    
+    width: auto;
+    margin:0px;
+    display: block;
+}
+.eliminar {
+    display: none;
 }

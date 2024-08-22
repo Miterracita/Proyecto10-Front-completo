@@ -28,6 +28,9 @@ export const EventList = (eventos) => {
     
     Header();
     Filtros();
+    
+    const btnVolverBorrar = document.querySelector('#btn-volver');
+    btnVolverBorrar.classList.add("eliminar");
 };
 
 export default EventList;

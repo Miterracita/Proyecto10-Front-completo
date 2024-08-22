@@ -1,5 +1,5 @@
 import "./event.css";
-import { ConfirmarAsistencia, EliminarEvento } from "../../../funciones";
+import { ConfirmarAsistencia, EliminarEvento, VerEvento } from "../../../funciones";
 
 export const EventBox = (event) => {
 
@@ -18,7 +18,7 @@ export const EventBox = (event) => {
                 <p class="event-hour"><span>Hour:</span> ${event.hour}</p>               
             </div>
             <div class="event-buttons">
-                <button class="btn" onclick="handleViewEvent('${event._id}')">Ver Evento</button>
+                <button class="btn" onclick="VerEvento('${event._id}')">Ver Evento</button>
                 <button class="btn" onclick="ConfirmarAsistencia('${event._id}')">Confirmar Asistencia</button>
                 <button class="btn btn-delete" onclick="EliminarEvento('${event._id}')">Eliminar Evento</button>
             </div>
@@ -28,6 +28,10 @@ export const EventBox = (event) => {
 };
 
 export default EventBox;
+
+window.VerEvento = async (eventId) => {
+    await VerEvento(eventId);
+};
 
 window.ConfirmarAsistencia = async (eventId) => {
     await ConfirmarAsistencia(eventId);

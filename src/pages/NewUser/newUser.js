@@ -74,6 +74,9 @@ export const NewUser = () => {
             }
         }
         
+        // Mostrar el loading
+        document.getElementById('loading').style.display = 'block';
+
         try {
             const res = await fetch(`${urlProduccion}users/registro`, opciones);
 
@@ -108,6 +111,11 @@ export const NewUser = () => {
         } catch (error){
             console.error('Error en la solicitud:', error);
             errorMessage.textContent = 'Error en la solicitud. Inténtalo de nuevo más tarde.';
+        
+        } finally {
+
+            // Ocultar el loading
+            document.getElementById('loading').style.display = 'none';
         }
     }
 
